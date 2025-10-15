@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Feedback Form</title>
+</head>
+<body>
+  <h2>Employee Feedback</h2>
+  <form id="feedbackForm">
+    <label>Name:</label><br>
+    <input type="text" id="name"><br><br>
+    <label>Feedback:</label><br>
+    <textarea id="feedback"></textarea><br><br>
+    <button type="button" id="submitBtn">Submit</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    let clickedOnce = false;
+
+    document.getElementById('submitBtn').addEventListener('click', function() {
+      const name = document.getElementById('name').value;
+      const feedback = document.getElementById('feedback').value;
+
+      if (!clickedOnce) {
+        document.getElementById('message').innerText = "Hmm... looks like something didn’t go through. Try again!";
+        clickedOnce = true;
+        return;
+      }
+
+      if (name && feedback) {
+        document.getElementById('message').innerText = `Thanks, ${name}! Your feedback was submitted.`;
+      } else {
+        document.getElementById('message').innerText = "Please fill in all fields.";
+      }
+    });
+  </script>
+</body>
+</html>
